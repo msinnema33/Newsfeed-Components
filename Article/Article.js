@@ -112,6 +112,26 @@ const data = [{
 
 */
 
+const articles = document.querySelector('.articles');
+
+//articles.appendChild(createArticle('title', 'date', '1', '2', '3'));
+
+// let newArticles = data.map((title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+//     let newArticle = createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph);
+
+
+//     return newArticle;
+// })
+
+// newArticles.forEach((title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+//     articles.appendChild(title, date, firstParagraph, secondParagraph, thirdParagraph);
+// });
+
+data.forEach(data => {
+    articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+})
+
+
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
     const art = document.createElement('div');
     const arTitle = document.createElement('h2');
@@ -132,8 +152,17 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
     arDate.classList.add('date');
     arSpan.classList.add('expandButton');
 
+    arTitle.textContent = title;
+    arDate.textContent = date;
+    arFirstParagraph.textContent = firstParagraph;
+    arSecondParagraph.textContent = secondParagraph;
+    arThirdParagraph.textContent = thirdParagraph;
     arSpan.textContent = "Expand";
 
+    arSpan.addEventListener('click', event => {
+        art.classList.toggle('article-open');
+    })
 
+    return createArticle;
 
 }
