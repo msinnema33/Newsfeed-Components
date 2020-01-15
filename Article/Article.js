@@ -112,7 +112,7 @@ const data = [{
 
 */
 
-const articles = document.querySelector('.articles');
+const display = document.querySelector('.articles');
 
 //articles.appendChild(createArticle('title', 'date', '1', '2', '3'));
 
@@ -127,8 +127,10 @@ const articles = document.querySelector('.articles');
 //     articles.appendChild(title, date, firstParagraph, secondParagraph, thirdParagraph);
 // });
 
-data.forEach(data => {
-    articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+data.forEach(el => {
+    console.log(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph);
+
+    display.appendChild(createArticle(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph));
 })
 
 
