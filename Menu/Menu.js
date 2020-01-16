@@ -34,31 +34,57 @@ let menuItems = [
   
 */
 
-const headerimg = document.querySelector('.menu-button');
+// const headerimg = document.querySelector('.menu-button');
 
+// function addMenu(menuItems) {
+//     const menu = document.createElement('div');
+//     const list = document.createElement('ul');
+//     //const item = document.createElement('li');
 
+//     menu.appendChild(list);
+//     list.appendChild(item);
 
-function addMenu(menuItems) {
+//     menu.classList.add('menu');
+
+//     item.textContent = menuItems;
+
+//     headerimg.addEventListener('click', event => {
+//         menu.classList.toggle('menu--open');
+//     })
+
+//     return menu;
+// }
+
+// menuItems.forEach(el => {
+//     //console.log(el);
+//     headerimg.append(addMenu(el));
+// })
+
+// const header = document.querySelector('.header');
+// header.append(addMenu(menuItems));
+
+function menuCreator(array) {
     const menu = document.createElement('div');
     const list = document.createElement('ul');
-    const item = document.createElement('li');
 
-    menu.appendChild(list);
-    list.appendChild(item);
 
     menu.classList.add('menu');
 
-    item.textContent = menuItems;
+    menu.append(list);
 
+    array.forEach(e => {
+        let menuItem = document.createElement("li");
+        menuItem.textContent = e;
+        list.append(menuItem);
+    });
 
+    const button = document.querySelector('.menu-button')
+    button.addEventListener('click', () => {
+        menu.classList.toggle("menu--open");
 
-    headerimg.addEventListener('click', event => {
-        menu.classList.toggle('menu--open');
     })
-
     return menu;
 }
-menuItems.forEach(el => {
-    console.log(el);
-    headerimg.appendChild(addMenu(el));
-})
+
+const header = document.querySelector('.header');
+header.append(menuCreator(menuItems));

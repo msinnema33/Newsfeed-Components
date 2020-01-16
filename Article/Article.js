@@ -84,7 +84,35 @@ const data = [{
         thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-    }
+    },
+    {
+        title: 'React vs Angular vs Vue',
+        date: 'June 7th, 2019',
+        firstParagraph: `Bulbasaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ivysaur Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Venusaur Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Charmeleon Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charizard Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit. Squirtle Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wartortle Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit. Blastoise Lorem ipsum dolor sit amet, consectetur adipiscing elit. Caterpie Lorem
+      ipsum dolor sit amet, consectetur adipiscing elit. Metapod Lorem ipsum dolor sit amet, consectetur adipiscing elit. Butterfree
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Weedle Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Kakuna Lorem ipsum dolor sit amet, consectetur adipiscing elit. Beedrill Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit.`,
+
+        secondParagraph: `Pidgey Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pidgeotto Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Pidgeot Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rattata Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Raticate Lorem ipsum dolor sit amet, consectetur adipiscing elit. Spearow Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Fearow Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ekans Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Arbok Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pikachu Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Raichu Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sandshrew Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit. Sandslash Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Nidorina Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidoqueen Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
+      sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
+
+        thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
+      Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+      Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
+    },
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,7 +140,7 @@ const data = [{
 
 */
 
-const display = document.querySelector('.articles');
+//const display = document.querySelector('.articles');
 
 //articles.appendChild(createArticle('title', 'date', '1', '2', '3'));
 
@@ -127,10 +155,12 @@ const display = document.querySelector('.articles');
 //     articles.appendChild(title, date, firstParagraph, secondParagraph, thirdParagraph);
 // });
 
-data.forEach(el => {
-    console.log(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph);
+const articles = document.querySelector('.articles');
 
-    display.appendChild(createArticle(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph));
+data.forEach(el => {
+    //console.log(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph);
+
+    articles.append(createArticle(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph));
 })
 
 
@@ -143,12 +173,12 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
     const arThirdParagraph = document.createElement('p');
     const arSpan = document.createElement('span');
 
-    art.appendChild(arTitle);
-    art.appendChild(arDate);
-    art.appendChild(arFirstParagraph);
-    art.appendChild(arSecondParagraph);
-    art.appendChild(arThirdParagraph);
-    art.appendChild(arSpan);
+    art.append(arTitle);
+    art.append(arDate);
+    art.append(arFirstParagraph);
+    art.append(arSecondParagraph);
+    art.append(arThirdParagraph);
+    art.append(arSpan);
 
     art.classList.add('article');
     arDate.classList.add('date');
@@ -164,7 +194,12 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
     arSpan.addEventListener('click', event => {
         art.classList.toggle('article-open');
     })
-
-    return createArticle;
+    return art;
 
 }
+
+// data.forEach(el => {
+//     console.log(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph);
+
+//     articles.appendChild(createArticle(el.title, el.date, el.firstParagraph, el.secondParagraph, el.thirdParagraph));
+// })
